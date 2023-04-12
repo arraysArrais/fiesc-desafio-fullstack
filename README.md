@@ -1,5 +1,26 @@
 # Prova PHP IST
 
+O desenvolvimento da prova consiste em desenvolver um sistema, conforme especificado nos protótipos abaixo.
+
+**Cadastro de pessoa**
+
+![prova-php-ist](imagens/pessoa.png)
+
+**Cadastro de conta**
+
+![prova-php-ist](imagens/conta.png)
+
+**Cadastro de movimentação**
+
+![prova-php-ist](imagens/movimentacao.png)
+
+Para a realização da prova, deve-se utilizar a linguagem de programação **PHP**.
+
+Alguns pontos em relação ao desenvolvimento: 
+- Pode ser utilizado qualquer framework PHP (Laravel, CodeIgniter, Symfony e outros) para o desenvolvimento.
+- Fique a vontade para adicionar bibliotecas e ferramentas externas, caso ache necessário.
+- Organize os arquivos do projeto de uma forma adequada (MVC).
+
 # Tecnologias utilizadas
 ![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white) 
 <br>![LARAVEL](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white) 
@@ -13,17 +34,18 @@
 # Instruções para executar o projeto
 ```bash
 # Clone o repositório
-$ git clone git@github.com:SENAI-SD/02955-2023-120.679.667-74.git
+$ git clone git@github.com:arraysArrais/fiesc-desafio-fullstack.git
 
 # Navegue até a pasta onde está localizado o ambiente docker
-$ cd 02955-2023-120.679.667-74/laradock
+$ cd fiesc-desafio-fullstack/laradock
 
 # Execute o comando abaixo
 $ docker-compose up -d nginx mysql phpmyadmin
 
 # Aguarde o término da execução do comando anterior. Na primeira vez pode demorar alguns minutos.
 
-# Após o container subir com a aplicação, acesse no browser o endereço http://localhost:8089/migrate para executar o script de migrations e seeders, criando toda a estrutura necessária no banco de dados
+# Após o container subir com a aplicação, acesse no browser o endereço http://localhost:8089/migrate 
+# para executar o script de migrations e seeders, criando toda a estrutura necessária no banco de dados
 
 Acessar a aplicação através do endereço http://localhost:8089/
 ```

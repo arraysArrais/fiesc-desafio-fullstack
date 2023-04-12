@@ -52,9 +52,10 @@ class HomeController extends Controller
         ]);
     }
 
-    public function editUserAction(ValidatePessoaRequest $r){
+    public function editUserAction(Request $r){
 
         $pessoa = Pessoa::find($r->id);
+        
 
         if($r->nome == null){
             $r->nome = $pessoa->nome;
@@ -69,7 +70,14 @@ class HomeController extends Controller
         $pessoa->nome = $r->nome;
         $pessoa->cpf = $this->trataCpf($r->cpf);
         $pessoa->endereco = $r->endereco;
-        $pessoa->save();
+
+        if($pessoa->validaCPF($pessoa->cpf)){
+            $pessoa->save();
+        }
+        else{
+            return redirect(route('home'))->withErrors(['msg' => "CPF inválido"]);
+        }
+
 
         return redirect(route('home'));
     }

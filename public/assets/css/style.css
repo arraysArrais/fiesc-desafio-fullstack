@@ -8,7 +8,7 @@
 }
 
 .formContainer {
-    max-width: 80vw;
+    max-width: 40vw;
     margin: 0 auto 0 auto;
 }
 
@@ -72,3 +72,11 @@ input[type=number] {
 .deposito{
     color:green;
 }
+
+@media (max-width: 1024px) {
+    .formContainer {
+      max-width:100vw;
+    }
+  }
+  
+  

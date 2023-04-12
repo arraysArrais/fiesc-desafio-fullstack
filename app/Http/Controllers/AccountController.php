@@ -12,12 +12,8 @@ use Illuminate\Support\Facades\DB;
 class AccountController extends Controller
 {
     public function index(){
-        // $pessoas = Pessoa::with('conta:pessoa_id,numero')->get();
         $pessoas = Pessoa::all();
-        $pessoasComConta = Pessoa::has('conta')->with('conta:pessoa_id,numero')->get();
 
-        
-        // $contaComPessoas = Conta::has('pessoa')->get();
         $pessoasComContas = DB::select('select c.id, p.nome, p.cpf, c.numero, c.saldo from contas c
         inner join pessoas p on p.id = c.pessoa_id');
         
@@ -25,8 +21,6 @@ class AccountController extends Controller
             $pessoaComContas->saldo = number_format($pessoaComContas->saldo, 2, ',', '.');
         }
         
-
-
         return view('account',[
             'pessoas' => $pessoas,
             'pessoasComContas' => $pessoasComContas

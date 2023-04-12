@@ -19,16 +19,7 @@ class TransactionController extends Controller
         inner join contas c on c.id = m.conta_id  
         inner join pessoas p on p.id = c.pessoa_id');
 
-        // $pessoasComContas = DB::select('select c.id, p.id as pessoa_id, p.nome, p.cpf, c.numero, c.saldo from contas c
-        // inner join pessoas p on p.id = c.pessoa_id
-        // GROUP BY pessoa_id 
-        // HAVING COUNT(c.id) >= 1;');
-
-        // foreach($pessoasComContas as $pessoaComContas){
-        //     $pessoaComContas->saldo = number_format($pessoaComContas->saldo, 2, ',', '.');
-        // }
-
-        $pessoasComContas = Pessoa::has('conta')->with('conta')->get(); //funcionando, todos os registros de Pessoa que têm conta, com os dados da conta
+        $pessoasComContas = Pessoa::has('conta')->with('conta')->get(); 
 
         $contas = Conta::all();
 
@@ -55,11 +46,7 @@ class TransactionController extends Controller
         
         $forbiddenChars = [','];
         $r->valor = str_replace($forbiddenChars, '.', $r->valor);
-        // dd($r->valor);
-        // dd($r->valor);
         
-        
-
         $conta = Conta::find($r->conta);
 
 
@@ -91,15 +78,11 @@ class TransactionController extends Controller
     public function getMovimentacoesByContaId(Request $r)
     {
         $movimentacoes = Movimentacao::where('conta_id', $r->conta_id)->get();
-        // dd($movimentacoes);
 
         foreach ($movimentacoes as $movimentacao) {
             $movimentacao->valor = number_format($movimentacao->valor, 2, ',', '.');
-            $x = Carbon::parse($movimentacao->created_at)->setTimezone('America/Sao_Paulo');
         }
-
         
-
         return response()->json($movimentacoes);
     }
 }
